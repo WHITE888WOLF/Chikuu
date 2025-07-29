@@ -3,12 +3,9 @@ workflows:
     name: "Chikuu Android Build"
     max_build_duration: 60
     environment:
-      groups:
-        - default
+      image: ubuntu-latest
       vars:
         JAVA_VERSION: 17
-      android:
-        image: latest
     scripts:
       - name: "Clean Project"
         script: ./gradlew clean
