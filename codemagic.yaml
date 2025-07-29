@@ -1,0 +1,50 @@
+workflows:
+  chikuu-android-ios:
+    name: Chikuu Build Workflow
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    environment:
+      groups:
+        - keystore_credentials
+      vars:
+        FIREBASE_ANDROID_APP_ID: "1:135123565977:android:your_app_id"
+        FIREBASE_IOS_APP_ID: "1:135123565977:ios:your_app_id"
+      xcode: latest
+      java: 17
+      gradle: 8.1
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "main"
+          include: true
+
+    scripts:
+      - name: Clean project
+        script: |
+          rm -rf build
+          cd android
+          ./gradlew clean
+          cd ..
+
+      - name: Build Android Release APK
+        script: |
+          cd android
+          ./gradlew assembleRelease
+
+      - name: Build iOS Release
+        script: |
+          cd ios
+          pod install
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -sdk iphoneos -configuration Release archive -archivePath $CM_BUILD_DIR/ios_archive.xcarchive
+
+    artifacts:
+      - android/app/build/outputs//*.apk
+      - $CM_BUILD_DIR/ios_archive.xcarchive
+
+    publishing:
+      email:
+        recipients:
+          - "your_email@example.com"
