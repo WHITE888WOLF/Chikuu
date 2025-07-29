@@ -2,8 +2,8 @@ workflows:
   android-release:
     name: "Chikuu Android Build"
     max_build_duration: 60
+    instance_type: mac_mini_m2  # या linux_x2 अगर MacOS नहीं चाहिए
     environment:
-      image: ubuntu-latest
       vars:
         JAVA_VERSION: 17
     scripts:
