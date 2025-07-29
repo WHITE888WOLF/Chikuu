@@ -1,23 +1,24 @@
 workflows:
-  chikuu-android-build:
-    name: Chikuu Android Build
+  chikuu_flutter_build:
+    name: Chikuu Flutter Build
     max_build_duration: 60
     environment:
-      vars:
-        PACKAGE_NAME: "com.chikuu.app"
-      java: 17
+      flutter: stable
+      xcode: latest
+      android:
+        image: default
+      cocoapods: default
     scripts:
-      - name: Clean Project
-        script: |
-          cd android
-          ./gradlew clean
-      - name: Build Debug APK
-        script: |
-          cd android
-          ./gradlew assembleDebug
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
+      # If you also want an iOS build, uncomment below (needs Apple developer account)
+      # - name: Build iOS
+      #   script: flutter build ios --release --no-codesign
     artifacts:
-      - android/app/build/outputs//*.apk
+      - build/app/outputs/flutter-apk/app-release.apk
     publishing:
       email:
         recipients:
-          - "your-email@example.com"
+          - your@email.com
