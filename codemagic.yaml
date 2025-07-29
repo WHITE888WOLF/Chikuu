@@ -5,10 +5,7 @@ workflows:
     environment:
       vars:
         PACKAGE_NAME: "com.chikuu.app"
-      flutter: stable
       java: 17
-      android:
-        build: gradle
     scripts:
       - name: Clean Project
         script: |
