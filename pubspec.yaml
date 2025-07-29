@@ -1,24 +1,38 @@
 name: chikuu
 description: "A premium, secure, cross-platform romantic/cute games and chat app."
 version: 1.0.0+1
+
 environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.19.0
-  firebase_auth: ^4.17.5
-  cloud_firestore: ^4.15.8
-  firebase_database: ^11.7.0
-  firebase_storage: ^12.4.0
-  firebase_messaging: ^14.9.1
+  cupertino_icons: ^1.0.8
+
+  # Firebase (updated for compatibility with Flutter 3.x)
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.0
+  cloud_firestore: ^5.4.4
+  firebase_database: ^11.3.3
+  firebase_storage: ^12.3.3
+  firebase_messaging: ^15.2.3
+
+  # State management
   provider: ^6.1.2
+
+  # WebView
   webview_flutter: ^4.7.0
-  flutter_webrtc: ^0.9.47
-  lottie: ^2.7.0
-  http: ^1.2.1
+
+  # WebRTC for calls
+  flutter_webrtc: ^0.11.8
+
+  # Animations & UI
+  lottie: ^3.1.2
+  google_fonts: ^6.2.1
+
+  # HTTP requests
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
