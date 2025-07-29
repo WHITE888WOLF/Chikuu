@@ -10,7 +10,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
 
-  # Firebase (updated for compatibility with Flutter 3.x)
+  # Firebase (all updated for Flutter 3.x)
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.0
   cloud_firestore: ^5.4.4
@@ -24,8 +24,8 @@ dependencies:
   # WebView
   webview_flutter: ^4.7.0
 
-  # WebRTC for calls
-  flutter_webrtc: ^0.11.8
+  # WebRTC (updated for Flutter 3.22+)
+  flutter_webrtc: ^1.0.4
 
   # Animations & UI
   lottie: ^3.1.2
