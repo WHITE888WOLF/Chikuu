@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services' // <-- Added for Firebase
+
+android {
+    namespace "com.momochikuu.loveapp"
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "com.momochikuu.loveapp"
+        minSdkVersion 21 // <-- Ensure minSdkVersion is 21
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+    // ...
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // ...
+}
