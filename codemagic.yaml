@@ -1,15 +1,26 @@
 workflows:
-  android-release:
-    name: "Chikuu Android Build"
+  chikuu-android-build:
+    name: Chikuu Android Build
     max_build_duration: 60
-    instance_type: mac_mini_m2  # या linux_x2 अगर MacOS नहीं चाहिए
     environment:
       vars:
-        JAVA_VERSION: 17
+        PACKAGE_NAME: "com.chikuu.app"
+      flutter: stable
+      java: 17
+      android:
+        build: gradle
     scripts:
-      - name: "Clean Project"
-        script: ./gradlew clean
-      - name: "Build Release APK"
-        script: ./gradlew assembleRelease
+      - name: Clean Project
+        script: |
+          cd android
+          ./gradlew clean
+      - name: Build Debug APK
+        script: |
+          cd android
+          ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/apk/release/app-release.apk
+      - android/app/build/outputs//*.apk
+    publishing:
+      email:
+        recipients:
+          - "your-email@example.com"
